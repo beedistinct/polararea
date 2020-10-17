@@ -35,16 +35,19 @@ var csvdata = d3.csv("final_dataset_101520.csv")
             .text(function (d) { return d; }) // text showed in the menu
             .attr("value", function (d) { return d; }); // corresponding value returned by the button
 
-        var year = 2019;                 // Initialize with year 2019 so this is the chart default year
-        var state = "IA";                 // Initialize with Iowa state so this is the chart default state
-        var yearData = getFilteredData(data, year, state);
+        var selectedYear = "2019";                 // Initialize with year 2019 so this is the chart default year
+        var selectedState = "Alabama";  // Initialize with Iowa state so this is the chart default state
+        var yearData = getFilteredData(data, selectedYear, selectedState);
 
         // When the year dropdown's value is changed, run the updateChart function
         document.getElementById('yearDropdown').addEventListener('change', function() { 
         var selectedYear = d3.select(this).property("value");     // recover the option that has been chosen
-        console.log(selectedYear);
-        var filteredData = getFilteredData(data, selectedYear, state);
-        console.log("selected year changed",filteredData);
+        console.log("selected year", selectedYear);
+        var selectElement =  document.querySelector('#stateDropdown');              
+        selectedState = selectElement.value; 
+        console.log("read from dropdown", selectedState);
+        var filteredData = getFilteredData(data, selectedYear, selectedState);
+        console.log("selected year changed", filteredData);
        
         myPolarArea.data.datasets[0].data = TXdata;    //temp only replace TXdata with filtered data
         // run the updateChart function with this selected option
@@ -54,8 +57,11 @@ var csvdata = d3.csv("final_dataset_101520.csv")
       // When the state dropdown's value is changed, run the updateChart function
       document.getElementById('stateDropdown').addEventListener('change', function() { 
         var selectedState = d3.select(this).property("value");     // recover the option that has been chosen
+        var selectElement =  document.querySelector('#yearDropdown');              
+        selectedYear = selectElement.value;
+        console.log("read from year dropdown", selectedYear);
         console.log(selectedState);
-        var filteredData = getFilteredData(data, year, selectedState);
+        var filteredData = getFilteredData(data, selectedYear, selectedState);
         console.log("selected state changed",filteredData);
        
         myPolarArea.data.datasets[0].data = CAdata;    //temp only replace CAdata with filtered data
