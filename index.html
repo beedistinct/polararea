@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polar Area Chart for Mortgage</title>
+
+ <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <!-- The div that holds our chart -->
+  <div id="canvas-holder" style="width:50%">
+		<canvas id="chart-area"></canvas>
+	</div>
+	 <!-- Small button groups (default and split) -->
+   <div>
+    <div class="btn-group">
+        <select id="yearDropdown"></select>
+    </div>
+    <div class="btn-group">
+      <select id="stateDropdown"></select>
+  </div>
+   </div> 
+
+  <!-- Chart.js JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="polararea.js"></script>
+</body>
+</html>
